@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     white: '#fff',
-    black: '#000',
+    black: 'rgba(0,0,0,0.5)',
     primaryText: '#ffffff',
     secondaryText: '#cfcbc8',
     backgroundColor: '#013f4e',
@@ -12,5 +12,5 @@ export const theme = {
   },
   space: value => `${4 * value}px`,
   transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
-  boxShadow: '0px 2px 3px  #212121',
+  boxShadow: '0px 2px 4px 2px  #00718f',
 };

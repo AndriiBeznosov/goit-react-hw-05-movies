@@ -14,6 +14,7 @@ export const NavItem = styled(NavLink)`
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  color: ${p => p.theme.colors.white};
 `;
 
 export const List = styled.ul`

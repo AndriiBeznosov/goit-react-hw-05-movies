@@ -11,12 +11,16 @@ import {
   List,
   Item,
   Title,
+  Info,
 } from './Movie.styled';
+import Image from '../../../images/library-empty.png';
+import ImageFefault from '../../../images/image_default.jpg';
 
 const Movies = () => {
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
+  const location = useLocation();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -36,6 +40,10 @@ const Movies = () => {
     }
     try {
       searchMovies(query).then(res => {
+        console.log(res.data.results);
+        if (res.data.total_pages < 0) {
+          return;
+        }
         setMovieList(res.data.results);
       });
     } catch (error) {
@@ -43,7 +51,7 @@ const Movies = () => {
     }
   }, [query]);
 
-  const location = useLocation();
+  console.log(movieList);
   return (
     <Wrapper>
       <form onSubmit={handleSubmit}>
@@ -51,7 +59,6 @@ const Movies = () => {
           type="text"
           name="name"
           autocomplete="off"
-          autoFocus
           placeholder="Search movies"
         />
 
@@ -59,22 +66,34 @@ const Movies = () => {
       </form>
 
       <>
-        {!!movieList.length ? (
+        {movieList === null && (
+          <div>
+            <img src={Image} alt="photoddfafa" />
+          </div>
+        )}
+        {movieList !== null && (
           <List>
             {movieList.map(item => (
               <Item key={item.id}>
                 <NavItem to={`${item.id}`} state={{ from: location }}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                    alt={item.title || item.name}
-                  />
+                  {item.poster_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                      alt={item.title || item.name}
+                    />
+                  ) : (
+                    <img src={ImageFefault} alt={item.title || item.name} />
+                  )}
                   <Title>{item.title || item.name}</Title>
                 </NavItem>
               </Item>
             ))}
           </List>
-        ) : (
-          <h2>Nothing was found for your query!</h2>
+        )}
+        {movieList !== null && movieList.length <= 0 && (
+          <div>
+            <Info>Nothing was found, try changing the query...</Info>
+          </div>
         )}
       </>
     </Wrapper>

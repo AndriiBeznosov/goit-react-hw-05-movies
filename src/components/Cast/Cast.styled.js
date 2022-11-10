@@ -13,4 +13,5 @@ export const List = styled.ul`
 `;
 export const Item = styled.li`
   width: 99px;
+  color: ${p => p.theme.colors.white};
 `;

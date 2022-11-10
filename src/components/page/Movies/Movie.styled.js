@@ -11,6 +11,7 @@ export const Input = styled.input`
   font-size: 18px;
   width: 300px;
   box-shadow: ${p => p.theme.boxShadow};
+  outline: 0;
 `;
 export const Button = styled.button`
   border: transparent;
@@ -33,6 +34,7 @@ export const NavItem = styled(NavLink)`
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  color: ${p => p.theme.colors.white};
 `;
 
 export const List = styled.ul`
@@ -63,4 +65,8 @@ export const Title = styled.h3`
   align-items: center;
   text-align: center;
   padding: 5px;
+`;
+export const Info = styled.h3`
+  font-size: 50px;
+  text-align: center;
 `;

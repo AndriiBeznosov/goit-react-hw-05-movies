@@ -14,6 +14,7 @@ import {
   Title,
   Main,
 } from './MovieDetails.styled.';
+import ImageDefault from '../../../images/image_default.jpg';
 
 const MovieDetails = () => {
   const [details, serDetails] = useState([]);
@@ -32,10 +33,14 @@ const MovieDetails = () => {
       <BackLink to={backLinkHref}>Back to...</BackLink>
       {!details[0] ? (
         <Card>
-          <Image
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={title || name}
-          />
+          {poster_path ? (
+            <Image
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt={title || name}
+            />
+          ) : (
+            <Image src={ImageDefault} alt="photoddfafa" />
+          )}
           <Wrapper>
             <Info>
               <Title> {title || name}</Title>
