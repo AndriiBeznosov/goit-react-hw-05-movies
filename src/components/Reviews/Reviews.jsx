@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { searchReviews } from 'servises/api';
 import { useEffect, useState } from 'react';
+
+import { searchReviews } from 'servises/api';
 
 const Reviews = () => {
   const [listPerson, serlistPerson] = useState([]);

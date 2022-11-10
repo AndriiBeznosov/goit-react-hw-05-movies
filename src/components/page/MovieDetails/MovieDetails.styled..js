@@ -15,6 +15,8 @@ export const NavItem = styled(NavLink)`
   background-color: ${p => p.theme.colors.backgroundSecondary};
   color: ${p => p.theme.colors.white};
   box-shadow: ${p => p.theme.boxShadow};
+  transition: color ${p => p.theme.transition},
+    background-color ${p => p.theme.transition};
   &.active {
     color: ${p => p.theme.colors.tomato};
   }
@@ -34,6 +36,7 @@ export const BackLink = styled(Link)`
   margin-bottom: 10px;
   border-radius: 4px;
   box-shadow: ${p => p.theme.boxShadow};
+  transition: background-color ${p => p.theme.transition};
   &:hover {
     background-color: ${p => p.theme.colors.tomato};
   }
